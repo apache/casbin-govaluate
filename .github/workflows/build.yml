@@ -67,18 +67,3 @@ jobs:
             git diff
             exit 1
           fi
-
-  semantic-release:
-    name: Release
-    needs: [test, lint, format]
-    runs-on: ubuntu-latest
-    if: github.repository == 'casbin/govaluate' && github.event_name == 'push'
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: -1
-
-      - name: Run semantic-release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release@22.0.8
