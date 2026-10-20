@@ -250,6 +250,26 @@ func TestNoParameterEvaluation(test *testing.T) {
 			Expected: 64.0,
 		},
 		{
+			Name:     "Bitwise AND precedence over OR",
+			Input:    "1 | 2 & 4",
+			Expected: 1.0,
+		},
+		{
+			Name:     "Bitwise AND precedence over XOR",
+			Input:    "6 ^ 3 & 1",
+			Expected: 7.0,
+		},
+		{
+			Name:     "Bitwise XOR precedence over OR",
+			Input:    "1 | 1 ^ 1",
+			Expected: 1.0,
+		},
+		{
+			Name:     "Bitwise precedence mixed",
+			Input:    "4 & 6 | 1 ^ 3 & 2",
+			Expected: 7.0,
+		},
+		{
 			Name:     "Bit shift precedence amongst non-bitwise",
 			Input:    "90 + 50 << 1 * 5",
 			Expected: 4480.0,
