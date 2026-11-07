@@ -242,5 +242,5 @@ see [LICENSE](LICENSE), [NOTICE](NOTICE) and [CONTRIBUTORS](CONTRIBUTORS).
 The Go module and import path remain `github.com/casbin/govaluate` for compatibility.
 Repository hosting is at [apache/casbin-govaluate](https://github.com/apache/casbin-govaluate).
 Official source distributions are available through the
-[Apache Casbin download page](https://casbin.apache.org/download).
+[Apache Casbin download page](https://casbin.apache.org/docs/download).
 Tags and development snapshots are not evidence of an approved Apache release.
