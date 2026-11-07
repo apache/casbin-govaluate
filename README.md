@@ -1,7 +1,13 @@
-govaluate
+Apache Casbin (Incubating) Govaluate
 ====
 
-[![Build Status](https://github.com/casbin/govaluate/actions/workflows/build.yml/badge.svg)](https://github.com/casbin/govaluate/actions/workflows/build.yml)
+Apache Casbin (Incubating) is an effort undergoing incubation at the Apache Software Foundation (ASF), sponsored by the Apache Incubator PMC.
+
+Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects.
+
+While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.
+
+[![Build Status](https://github.com/apache/casbin-govaluate/actions/workflows/build.yml/badge.svg)](https://github.com/apache/casbin-govaluate/actions/workflows/build.yml)
 [![Godoc](https://godoc.org/github.com/casbin/govaluate?status.svg)](https://pkg.go.dev/github.com/casbin/govaluate)
 [![Go Report Card](https://goreportcard.com/badge/github.com/casbin/govaluate)](https://goreportcard.com/report/github.com/casbin/govaluate) 
 
@@ -229,4 +235,12 @@ Releases will explicitly state when an API break happens, and if they do not spe
 License
 --
 
-This project is licensed under the MIT general use license. You're free to integrate, fork, and play with this code as you feel fit without consulting the author, as long as you provide proper credit to the author in your works.
+Apache release materials are licensed under the Apache License, Version 2.0.
+The inherited govaluate library and supporting files retain their MIT license;
+see [LICENSE](LICENSE), [NOTICE](NOTICE) and [CONTRIBUTORS](CONTRIBUTORS).
+
+The Go module and import path remain `github.com/casbin/govaluate` for compatibility.
+Repository hosting is at [apache/casbin-govaluate](https://github.com/apache/casbin-govaluate).
+Official source distributions are available through the
+[Apache Casbin download page](https://casbin.apache.org/download).
+Tags and development snapshots are not evidence of an approved Apache release.
