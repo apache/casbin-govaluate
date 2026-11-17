@@ -392,7 +392,7 @@ func makeAccessorStage(pair []string) evaluationOperator {
 			params, err = typeConvertParams(method, params)
 
 			if err != nil {
-				return nil, errors.New("Method call failed - '" + pair[0] + "." + pair[1] + "': " + err.Error())
+				return nil, errors.New("Method call failed - '" + pair[i-1] + "." + pair[i] + "': " + err.Error())
 			}
 
 			returned := method.Call(params)
@@ -421,7 +421,7 @@ func makeAccessorStage(pair []string) evaluationOperator {
 				continue
 			}
 
-			return nil, errors.New("Method call '" + pair[0] + "." + pair[1] + "' did not return either one value, or a value and an error. Cannot interpret meaning.")
+			return nil, errors.New("Method call '" + pair[i-1] + "." + pair[i] + "' did not return either one value, or a value and an error. Cannot interpret meaning.")
 		}
 
 		value = castToFloat64(value)
