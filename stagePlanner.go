@@ -416,7 +416,7 @@ func planValue(stream *tokenStream) (*evaluationStage, error) {
 
 		// clauses with single elements don't trigger SEPARATE stage planner
 		// this ensures that when used as part of an "in" comparison, the array requirement passes
-		if prev.Kind == COMPARATOR && prev.Value == "in" && ret.symbol == LITERAL {
+		if prev.Kind == COMPARATOR && prev.Value == "in" && ret != nil && ret.symbol == LITERAL {
 			// We need to copy this in case we are using the cached value...
 			tmp := *ret
 			tmp.operator = ensureSliceStage(ret.operator)
