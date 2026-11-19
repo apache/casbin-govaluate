@@ -1,4 +1,5 @@
 //go:build go1.24 && cache
+// +build go1.24,cache
 
 package govaluate
 
