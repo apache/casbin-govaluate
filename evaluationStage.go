@@ -335,7 +335,7 @@ func makeAccessorStage(pair []string) evaluationOperator {
 				// check if field is exported
 				firstCharacter := getFirstRune(pair[i])
 				if unicode.ToUpper(firstCharacter) != firstCharacter {
-					errorMsg := fmt.Sprintf("Unable to access unexported field '%s' in '%s'", pair[i], pair[i-1])
+					errorMsg := fmt.Sprintf("Unable to access unexported field '%s' in '%s'", pair[i], strings.Join(pair[:i], "."))
 					return nil, errors.New(errorMsg)
 				}
 
@@ -363,11 +363,11 @@ func makeAccessorStage(pair []string) evaluationOperator {
 					}
 				}
 			default:
-				return nil, errors.New("Unable to access '" + pair[i] + "', '" + pair[i-1] + "' is not a struct or map")
+				return nil, errors.New("Unable to access '" + pair[i] + "', '" + strings.Join(pair[:i], ".") + "' is not a struct or map")
 			}
 
 			if method == (reflect.Value{}) {
-				return nil, errors.New("No method or field '" + pair[i] + "' present on parameter '" + pair[i-1] + "'")
+				return nil, errors.New("No method or field '" + pair[i] + "' present on parameter '" + strings.Join(pair[:i], ".") + "'")
 			}
 
 			switch right := right.(type) {
@@ -392,14 +392,14 @@ func makeAccessorStage(pair []string) evaluationOperator {
 			params, err = typeConvertParams(method, params)
 
 			if err != nil {
-				return nil, errors.New("Method call failed - '" + pair[0] + "." + pair[1] + "': " + err.Error())
+				return nil, errors.New("Method call failed - '" + strings.Join(pair[:i+1], ".") + "': " + err.Error())
 			}
 
 			returned := method.Call(params)
 			retLength := len(returned)
 
 			if retLength == 0 {
-				return nil, errors.New("Method call '" + pair[i-1] + "." + pair[i] + "' did not return any values.")
+				return nil, errors.New("Method call '" + strings.Join(pair[:i+1], ".") + "' did not return any values.")
 			}
 
 			if retLength == 1 {
@@ -421,7 +421,7 @@ func makeAccessorStage(pair []string) evaluationOperator {
 				continue
 			}
 
-			return nil, errors.New("Method call '" + pair[0] + "." + pair[1] + "' did not return either one value, or a value and an error. Cannot interpret meaning.")
+			return nil, errors.New("Method call '" + strings.Join(pair[:i+1], ".") + "' did not return either one value, or a value and an error. Cannot interpret meaning.")
 		}
 
 		value = castToFloat64(value)
